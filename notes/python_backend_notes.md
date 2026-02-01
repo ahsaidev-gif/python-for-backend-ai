@@ -4,7 +4,8 @@
 These notes document my learning from a full Python beginner course,
 rewritten and structured from a **backend and AI engineering perspective**.
 
-Date started: 01-02-2026
+Date started: 01-02
+-2026
 
 ---
 
