@@ -4,8 +4,7 @@
 These notes document my learning from a full Python beginner course,
 rewritten and structured from a **backend and AI engineering perspective**.
 
-Date started: 01-02
--2026
+Date started: 01-02-2026
 
 ---
 
@@ -294,4 +293,94 @@ These Python fundamentals are essential for:
 * Python acts as glue code for backend AI systems
 * Clean, readable code is more valuable than clever tricks
 * These fundamentals will be reused across all future AI projects
+
+##  Learning Log
+
+###  02-02-2025
+
+### Topic: **Python Lists & Dictionaries**
+
+---
+
+##  Concepts Learned
+
+###  Python Lists
+
+* Lists are **ordered, mutable sequences** written using `[]`.
+* Can store **multiple data types**, though usually homogeneous.
+* Support:
+
+  * Indexing
+  * Negative indexing
+  * Slicing
+
+* Unlike strings, lists are **mutable**.
+* Assignment copies **references**, not values.
+* Slicing (`[:]`) creates a **shallow copy**.
+* Lists can be **nested**.
+* Common list operations:
+
+  * `append`, `insert`, `remove`, `pop`, `clear`
+  * `count`, `index`, `sort`, `reverse`, `copy`
+* Lists can act as:
+
+  * **Stacks (LIFO)** using `append()` and `pop()`
+  * **Queues (FIFO)** using `collections.deque`
+
+* **List comprehensions** provide concise and readable list creation.
+* Nested list comprehensions can replace nested loops.
+* Prefer built-in functions like `zip()` for readability.
+* `del` can remove:
+
+  * Individual items
+  * Slices
+  * Entire lists
+* Alternative data structures for performance:
+
+  * `array` → compact numeric storage
+  * `deque` → fast queue operations
+  * `heapq` → priority queues
+  * `bisect` → sorted list insertion
+
+---
+
+###  Dictionaries
+
+* Dictionaries store **key : value** pairs.
+* Keys must be **immutable**:
+
+  * strings
+  * numbers
+  * tuples
+* Values can be of any type.
+* Accessing a missing key raises a **KeyError**.
+* Use `dict.get()` to safely access keys.
+* Dictionaries maintain **insertion order**.
+* Common dictionary operations:
+
+  * Add or update values
+  * Delete keys using `del`
+  * Check key existence using `in`
+* Dictionary creation methods:
+
+  * Literal `{ }`
+  * `dict()` constructor
+  * Dictionary comprehensions
+* Looping techniques:
+
+  * `items()` → key & value
+  * `enumerate()` → index & value
+  * `zip()` → loop multiple sequences
+  * `sorted()`, `reversed()`, `set()`
+
+---
+
+##  Key Takeaways
+
+* Lists are **powerful but mutable** — reference handling is important.
+* Prefer **list comprehensions** and **built-ins** for clean code.
+* Use `deque` instead of lists for queue implementations.
+* Dictionaries are ideal for **fast lookups and mappings**.
+* `dict.get()` prevents runtime errors from missing keys.
+
 
