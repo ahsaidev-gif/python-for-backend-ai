@@ -1,10 +1,9 @@
-
 # Python Backend Fundamentals — Learning Notes
 
 These notes document my learning from a full Python beginner course,
 rewritten and structured from a **backend and AI engineering perspective**.
 
-Date started: 01-02-2026
+**Date started:** 01-02-2026
 
 ---
 
@@ -12,39 +11,42 @@ Date started: 01-02-2026
 
 Python enables solving complex problems with fewer lines of code.
 
-Example:
-- C#: `str.Substring(0, 3)`
-- JavaScript: `str.substr(0, 3)`
-- Python: `str[0:3]`
+**Example:**
+
+* C#: `str.Substring(0, 3)`
+* JavaScript: `str.substr(0, 3)`
+* Python: `str[0:3]`
 
 Python is widely used in:
-- Web applications
-- Automation and testing
-- Data analysis
-- AI / Machine Learning
-- Backend services
+
+* Web applications
+* Automation and testing
+* Data analysis
+* AI / Machine Learning
+* Backend services
 
 ### What makes Python special
-- High-level language (no manual memory management)
-- Huge community (20+ years)
-- Cross-platform (Windows, macOS, Linux)
-- Large ecosystem of libraries and frameworks
+
+* High-level language (no manual memory management)
+* Huge community (20+ years)
+* Cross-platform (Windows, macOS, Linux)
+* Large ecosystem of libraries and frameworks
 
 ---
 
 ## Python Versions
 
-- Python 2 → Legacy (ended in 2020)
-- Python 3 → Current and future version
+* **Python 2** → Legacy (ended in 2020)
+* **Python 3** → Current and future version
 
 ---
 
 ## How Python Code Executes (High Level)
 
-- Python source code
-- Compiled to Python bytecode
-- Executed by Python Virtual Machine (PVM)
-- Runs on different operating systems
+* Python source code
+* Compiled to Python bytecode
+* Executed by the Python Virtual Machine (PVM)
+* Runs on different operating systems
 
 This abstraction makes Python portable and developer-friendly.
 
@@ -52,12 +54,11 @@ This abstraction makes Python portable and developer-friendly.
 
 ## Expressions & Syntax
 
-- An **expression** is code that produces a value.
+* An **expression** is code that produces a value.
 
-Example:
 ```python
 "*" * 3
-````
+```
 
 * **Syntax errors** occur due to invalid grammar.
 * **Linters** detect issues before runtime.
@@ -75,8 +76,6 @@ Primitive data types:
 * `bool`
 * `str`
 
-Example:
-
 ```python
 students_count = 1000
 rating = 4.99
@@ -84,15 +83,14 @@ is_published = False
 course_name = "Python Programming"
 ```
 
-Python is case-sensitive and follows PEP8 style conventions.
+Python is case-sensitive and follows **PEP 8** style conventions.
 
 ---
 
 ## Strings
 
-Strings are immutable and support slicing.
-
-Example:
+* Strings are **immutable**
+* Support indexing and slicing
 
 ```python
 course = "Python Programming"
@@ -141,8 +139,6 @@ math.ceil(2.2)
 
 Input values are strings by default.
 
-Example:
-
 ```python
 x = int(input("Enter number: "))
 y = x + 1
@@ -166,8 +162,6 @@ Falsy values:
 * `None`
 
 Everything else is truthy.
-
-Example:
 
 ```python
 bool("False")  # True
@@ -224,7 +218,7 @@ while command.lower() != "quit":
 * `string`
 * `list`
 
-Nested loops can be used for matrix-style data.
+Nested loops are useful for matrix-style data.
 
 ---
 
@@ -232,26 +226,22 @@ Nested loops can be used for matrix-style data.
 
 Functions help reuse logic.
 
-Example:
-
 ```python
 def greet(name):
     return f"Hi {name}"
 ```
 
-Types:
+Types of functions:
 
-* Functions that perform tasks
-* Functions that return values
+* Perform tasks
+* Return values
 
-### Arguments
+### Function Arguments
 
 * Positional
 * Keyword
 * Default
 * Variable (`*args`)
-
-Example:
 
 ```python
 def multiply(*numbers):
@@ -266,8 +256,6 @@ def multiply(*numbers):
 ## File Handling
 
 Used for reading and writing data.
-
-Example:
 
 ```python
 with open("content.txt", "w") as file:
@@ -292,95 +280,155 @@ These Python fundamentals are essential for:
 
 * Python acts as glue code for backend AI systems
 * Clean, readable code is more valuable than clever tricks
-* These fundamentals will be reused across all future AI projects
+* Fundamentals scale directly to real-world systems
 
-##  Learning Log
+---
 
-###  02-02-2025
+## Learning Log — 02-02-2025
 
 ### Topic: **Python Lists & Dictionaries**
 
----
+### Python Lists
 
-##  Concepts Learned
+* Ordered, mutable sequences (`[]`)
+* Support indexing, negative indexing, slicing
+* Assignment copies references, not values
+* Slicing (`[:]`) creates a shallow copy
+* Can be nested
 
-###  Python Lists
+Common operations:
 
-* Lists are **ordered, mutable sequences** written using `[]`.
-* Can store **multiple data types**, though usually homogeneous.
-* Support:
+* `append`, `insert`, `remove`, `pop`, `clear`
+* `count`, `index`, `sort`, `reverse`, `copy`
 
-  * Indexing
-  * Negative indexing
-  * Slicing
+Usage patterns:
 
-* Unlike strings, lists are **mutable**.
-* Assignment copies **references**, not values.
-* Slicing (`[:]`) creates a **shallow copy**.
-* Lists can be **nested**.
-* Common list operations:
+* Stack (LIFO)
+* Queue (FIFO using `collections.deque`)
 
-  * `append`, `insert`, `remove`, `pop`, `clear`
-  * `count`, `index`, `sort`, `reverse`, `copy`
-* Lists can act as:
+Advanced concepts:
 
-  * **Stacks (LIFO)** using `append()` and `pop()`
-  * **Queues (FIFO)** using `collections.deque`
+* List comprehensions
+* Nested list comprehensions
+* `zip()` for readable iteration
+* `del` for removing items or slices
 
-* **List comprehensions** provide concise and readable list creation.
-* Nested list comprehensions can replace nested loops.
-* Prefer built-in functions like `zip()` for readability.
-* `del` can remove:
+Alternative structures:
 
-  * Individual items
-  * Slices
-  * Entire lists
-* Alternative data structures for performance:
+* `array`, `deque`, `heapq`, `bisect`
 
-  * `array` → compact numeric storage
-  * `deque` → fast queue operations
-  * `heapq` → priority queues
-  * `bisect` → sorted list insertion
+### Dictionaries
 
----
+* Store `key : value` pairs
+* Keys must be immutable
+* Maintain insertion order
+* Missing keys raise `KeyError`
+* `dict.get()` prevents runtime errors
 
-###  Dictionaries
+Creation & usage:
 
-* Dictionaries store **key : value** pairs.
-* Keys must be **immutable**:
+* `{ }`, `dict()`, comprehensions
+* `items()`, `enumerate()`, `zip()`
+* `sorted()`, `reversed()`, `set()`
 
-  * strings
-  * numbers
-  * tuples
-* Values can be of any type.
-* Accessing a missing key raises a **KeyError**.
-* Use `dict.get()` to safely access keys.
-* Dictionaries maintain **insertion order**.
-* Common dictionary operations:
+### Key Takeaways
 
-  * Add or update values
-  * Delete keys using `del`
-  * Check key existence using `in`
-* Dictionary creation methods:
-
-  * Literal `{ }`
-  * `dict()` constructor
-  * Dictionary comprehensions
-* Looping techniques:
-
-  * `items()` → key & value
-  * `enumerate()` → index & value
-  * `zip()` → loop multiple sequences
-  * `sorted()`, `reversed()`, `set()`
+* Lists are powerful but require careful reference handling
+* Prefer comprehensions and built-ins
+* Use `deque` for queues
+* Dictionaries enable fast lookups and mappings
 
 ---
 
-##  Key Takeaways
+## Learning Log — 03-02-2025
 
-* Lists are **powerful but mutable** — reference handling is important.
-* Prefer **list comprehensions** and **built-ins** for clean code.
-* Use `deque` instead of lists for queue implementations.
-* Dictionaries are ideal for **fast lookups and mappings**.
-* `dict.get()` prevents runtime errors from missing keys.
+### Topic: **Control Flow, Loops & Functions**
 
+### Conditional Statements
+
+* `if / elif / else` for decision making
+* `elif` avoids deep nesting
+* Replaces `switch/case`
+
+### Loops
+
+* `for` loops iterate over sequences, not counters
+* Avoid mutating collections during iteration
+* Prefer copying or building new collections
+
+### `range()`
+
+* Lazy, memory-efficient iterable
+* End value is exclusive
+* Supports start, stop, step
+
+### Loop Control
+
+* `break` exits loops
+* `continue` skips iteration
+* Loop `else` runs only if no `break`
+* `pass` used as placeholder
+
+### `match` Statement (Python 3.10+)
+
+* Structural pattern matching
+* Supports literals, tuples, classes, guards
+* `_` acts as wildcard
+* Useful for routing and protocol handling
+
+### Functions
+
+* Encapsulate reusable logic
+* Each call has its own local scope
+* Support docstrings and annotations
+
+### Function Arguments
+
+* Positional, keyword, default
+* `*args`, `**kwargs`
+* Default mutable arguments evaluated once (pitfall)
+
+### Special Parameters
+
+* `/` positional-only
+* `*` keyword-only
+* Protect APIs and prevent breaking changes
+
+### Lambda Expressions
+
+* Anonymous, single-expression functions
+* Used for sorting, callbacks, inline logic
+
+### Coding Style (PEP 8)
+
+* 4-space indentation
+* 79-character line length
+* Meaningful names
+* Readability over cleverness
+
+### Looping Techniques
+
+* `enumerate()`, `items()`, `zip()`
+* `sorted()` for ordered iteration
+* `set()` for uniqueness
+* Prefer new collections over mutation
+
+### Conditions & Comparisons
+
+* Chained comparisons
+* Membership (`in`, `not in`)
+* Identity (`is`, `is not`)
+* Boolean operators are short-circuiting
+
+### Compound Statements
+
+* Multi-line blocks (`if`, `for`, `while`, `try`, `with`, `match`)
+* Indentation defines scope
+
+### Key Takeaways
+
+* Control flow defines program behavior
+* Readability matters as much as correctness
+* `match` enables expressive logic
+* Clean functions = maintainable APIs
 

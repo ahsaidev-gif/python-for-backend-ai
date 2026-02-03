@@ -1,6 +1,17 @@
 """
-Dictionary examples representing metadata.
+Dictionary examples commonly used in backend programs.
+
+Demonstration:
+- Storing and updating metadata
+- Iterating over dictionary key-value pairs
+- Safe access using get()
+- Dictionary-based mapping and transformation
+- Text replacement using dictionary lookup
 """
+
+# =========================
+# METADATA DICTIONARY
+# =========================
 
 document = {
     "id": 1,
@@ -18,9 +29,18 @@ for key, value in document.items():
 
 
 """
-Basic dictionary access using get().
-Prevents runtime errors in APIs.
+Output:
+policy.pdf
+id 1
+name policy.pdf
+pages 15
+processed True
 """
+
+
+# =========================
+# SAFE DICTIONARY ACCESS
+# =========================
 
 customer = {
     "name": "John Smith",
@@ -32,9 +52,15 @@ print(customer.get("name"))
 
 
 """
-Dictionary mapping example.
-Used in normalization and transformation layers.
+Output:
+John Smith
 """
+
+
+# =========================
+# DICTIONARY MAPPING
+# =========================
+# Sample input assumed: 1345
 
 phone = input("Phone: ")
 
@@ -53,9 +79,16 @@ print(output)
 
 
 """
-Emoji/text replacement using dictionary lookup.
-Used in chat processing and NLP pipelines.
+Sample Output:
+Phone: 1345
+One Three Four !
 """
+
+
+# =========================
+# TEXT / EMOJI REPLACEMENT
+# =========================
+# Sample input assumed: Good morning :)
 
 message = input("> ")
 words = message.split(" ")
@@ -70,3 +103,10 @@ for word in words:
     output += emojis.get(word, word) + " "
 
 print(output)
+
+
+"""
+Sample Output:
+> Good morning :)
+Good morning emoji
+"""

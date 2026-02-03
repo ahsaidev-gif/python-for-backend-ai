@@ -1,18 +1,36 @@
 """
-List examples used in backend-style programs.
+List examples commonly used in backend-style programs.
+
+Demonstration:
+- Creating and modifying lists
+- Iteration and enumeration
+- Slicing, unpacking, and searching
+- Sorting simple and complex data
 """
 
-documents = ["doc1.pdf", "doc2.pdf", "doc3.pdf"]
+# =========================
+# BASIC LIST OPERATIONS
+# =========================
 
+documents = ["doc1.pdf", "doc2.pdf", "doc3.pdf"]
 documents.append("doc4.pdf")
 
 for doc in documents:
     print(doc)
 
+
 """
-Enumerate over a list with index and value.
-Common in logging, batch processing, and pipelines.
+Output:
+doc1.pdf
+doc2.pdf
+doc3.pdf
+doc4.pdf
 """
+
+
+# =========================
+# ENUMERATE LIST
+# =========================
 
 letters = ["a", "b", "c"]
 
@@ -21,19 +39,32 @@ for index, letter in enumerate(letters):
 
 
 """
-Create lists from ranges and strings.
-Used for indexing, tokenization, and preprocessing.
+Output:
+0 a
+1 b
+2 c
 """
+
+
+# =========================
+# LIST CREATION
+# =========================
 
 numbers = list(range(20))
 chars = list("Hello World")
 
 print(len(chars))
 
+
 """
-List slicing and step operations.
-Useful for pagination, sampling, and chunking.
+Output:
+11
 """
+
+
+# =========================
+# LIST SLICING
+# =========================
 
 letters = ["a", "b", "c", "d"]
 letters[0] = "A"
@@ -43,9 +74,15 @@ print(letters[::2])
 
 
 """
-Unpacking lists into head, body, and tail.
-Helpful for request parsing and stream handling.
+Output:
+['A', 'b', 'c']
+['A', 'c']
 """
+
+
+# =========================
+# LIST UNPACKING
+# =========================
 
 numbers = [1, 2, 3, 4, 4, 4, 4, 9]
 first, *others, last = numbers
@@ -55,9 +92,15 @@ print(others)
 
 
 """
-Adding and removing items from lists.
-Used in task queues and mutable collections.
+Output:
+1 9
+[2, 3, 4, 4, 4, 4]
 """
+
+
+# =========================
+# ADD / REMOVE OPERATIONS
+# =========================
 
 letters = ["a", "b", "c"]
 
@@ -70,10 +113,16 @@ letters.clear()
 
 print(letters)
 
+
 """
-Counting and searching list elements.
-Used in validations and analytics.
+Output:
+[]
 """
+
+
+# =========================
+# COUNT & SEARCH
+# =========================
 
 letters = ["a", "b", "c"]
 
@@ -82,10 +131,16 @@ print(letters.count("d"))
 if "d" in letters:
     print(letters.index("d"))
 
+
 """
-Sorting lists without mutating original data.
-Important for predictable backend behavior.
+Output:
+0
 """
+
+
+# =========================
+# SORTING LISTS
+# =========================
 
 numbers = [3, 51, 2, 8, 6]
 
@@ -94,9 +149,15 @@ print(numbers)
 
 
 """
-Sorting complex data using a key function.
-Common in business rules and reports.
+Output:
+[51, 8, 6, 3, 2]
+[3, 51, 2, 8, 6]
 """
+
+
+# =========================
+# SORTING COMPLEX DATA
+# =========================
 
 items = [
     ("Product1", 10),
@@ -106,3 +167,9 @@ items = [
 
 items.sort(key=lambda item: item[1])
 print(items)
+
+
+"""
+Output:
+[('Product2', 9), ('Product1', 10), ('Product3', 12)]
+"""
