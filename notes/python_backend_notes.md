@@ -3,7 +3,7 @@
 These notes document my learning from a full Python beginner course,
 rewritten and structured from a **backend and AI engineering perspective**.
 
-**Date started:** 01-02-2026
+## Learning Log — Day 1 -  01-02-2026
 
 ---
 
@@ -284,7 +284,7 @@ These Python fundamentals are essential for:
 
 ---
 
-## Learning Log — 02-02-2025
+## Learning Log — Day 2 -  02-02-2026
 
 ### Topic: **Python Lists & Dictionaries**
 
@@ -340,7 +340,7 @@ Creation & usage:
 
 ---
 
-## Learning Log — 03-02-2025
+## Learning Log — Day 3 - 03-02-2025
 
 ### Topic: **Control Flow, Loops & Functions**
 
@@ -431,4 +431,53 @@ Creation & usage:
 * Readability matters as much as correctness
 * `match` enables expressive logic
 * Clean functions = maintainable APIs
+
+## Learning Log — Day 4 - 04-02-2025
+
+Topics - Conditionals & Logical Operations
+Understanding decision-making logic in Python, which is critical for backend systems and AI workflows.
+
+
+Conditional Statements (if / elif / else)
+* Used for branching logic based on conditions.
+* elif avoids deep nesting and improves readability.
+* else is optional.
+* Python uses indentation to define blocks (no braces).
+This pattern replaces switch/case logic used in other languages.
+
+Logical Operators
+* and → all conditions must be true
+* or → at least one condition must be true
+* not → negates a condition
+Logical operators are short-circuiting, meaning evaluation stops as soon as the result is known.
+
+Comparison Operators
+* Equality: ==, !=
+* Relational: >, <, >=, <=
+* Membership: in, not in
+* Identity: is, is not
+Comparisons can be chained:
+a < b == c
+
+Loop else Clause
+* Executes only if the loop completes without break
+* Commonly used in:
+    * search logic
+    * validations
+    * prime checks
+
+Backend Perspective
+Conditional logic is heavily used in:
+* Input validation
+* Access control
+* Feature flags
+* Business rules
+* Error handling
+
+Key Takeaways
+* Indentation defines program flow.
+* elif improves clarity.
+* Logical operators short-circuit.
+* Loop else runs only when no break occurs.
+* Clean conditionals lead to maintainable backend code.
 
