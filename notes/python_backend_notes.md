@@ -653,5 +653,174 @@ These concepts are essential for:
 * Argument rules matter for API stability.
 * Clean function design is critical in backend systems.
 
+Great topic for **Day 6** 👍
+Below is a **clean Day 6 README** and a **separate `filehandling.py`**, matching the **same format you’ve been using**:
+
+* README → learning notes (Python docs–based)
+* `filehandling.py` → runnable examples
+* Clear demonstrations + outputs
+* Backend-oriented explanations
+* No loss of important content, but **cleaned and structured**
+
+---
+
+# 📘 Day 6 — File Handling, Compilation & JSON - 06-02-2025
+
+## Focus Area
+
+Understanding **Python file handling**, **compiled `.pyc` files**, and **data serialization** — essential for backend services, configuration storage, logging, and data exchange.
+
+---
+
+## What I Learned
+
+## Compiled Python Files (`.pyc`)
+
+* Python compiles source files (`.py`) into **bytecode** (`.pyc`).
+* Compiled files are stored in the `__pycache__` directory.
+* Filename format:
+
+  ```
+  module.cpython-<version>.pyc
+  ```
+* Example:
+
+  ```
+  __pycache__/spam.cpython-311.pyc
+  ```
+
+### Key Points
+
+* Compilation is **automatic**
+* Python recompiles only if source file changes
+* `.pyc` files are **platform-independent**
+* Programs do **not run faster**, but load faster
+* Modules run directly from CLI are **not cached**
+* Use `compileall` to precompile directories
+
+### Optimization Flags
+
+* `-O` → removes `assert`
+* `-OO` → removes `assert` + docstrings
+* Use cautiously (may break some programs)
+
+---
+
+## Reading and Writing Files
+
+### `open()` Function
+
+```python
+open(filename, mode, encoding=None)
+```
+
+Common modes:
+
+* `r` → read
+* `w` → write (overwrite)
+* `a` → append
+* `r+` → read + write
+* `b` → binary mode
+
+### Text vs Binary Mode
+
+* Text mode → reads/writes strings
+* Binary mode → reads/writes bytes
+* Binary mode **must be used** for images, executables, etc.
+
+---
+
+## Using `with` Statement
+
+* Ensures files are **closed automatically**
+* Safer than manual `open()` / `close()`
+* Prevents resource leaks
+
+```python
+with open("file.txt", "r", encoding="utf-8") as f:
+    data = f.read()
+```
+
+---
+
+## File Object Methods
+
+### Reading
+
+* `read(size)` → read entire or partial content
+* `readline()` → read one line
+* Iteration → memory efficient
+* `readlines()` → list of lines
+
+### Writing
+
+* `write(string)` → writes and returns character count
+
+### Cursor Control
+
+* `tell()` → current position
+* `seek(offset, whence)` → move cursor
+
+---
+
+## JSON Serialization
+
+* JSON is used for **data exchange** between systems.
+* Python provides the `json` module.
+
+### Serialization
+
+```python
+json.dump(data, file)
+json.dumps(data)
+```
+
+### Deserialization
+
+```python
+json.load(file)
+json.loads(string)
+```
+
+* JSON files must be encoded in **UTF-8**
+* Best for storing:
+
+  * dictionaries
+  * lists
+  * configuration data
+
+---
+
+## File Wildcards (`glob`)
+
+* Used to match file patterns.
+* Helpful for batch processing and automation.
+
+```python
+glob.glob("*.py")
+```
+
+---
+
+## Backend Perspective
+
+File handling is critical for:
+
+* Logging
+* Configuration management
+* Data ingestion
+* Model input/output
+* File uploads/downloads
+* JSON-based APIs
+
+---
+
+## Key Takeaways
+
+* `.pyc` files improve load time, not execution speed
+* Always use `with` for file operations
+* Use binary mode for non-text files
+* JSON is the standard for backend data exchange
+* `glob` simplifies file discovery
 
 
