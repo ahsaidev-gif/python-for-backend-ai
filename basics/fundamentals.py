@@ -1,7 +1,7 @@
 """
 Conditional statements and loops.
 
-Demonstration:
+Demonstrates:
 - Using if / elif / else for decision making
 - Iterating with a for loop using range
 """
@@ -16,8 +16,8 @@ else:
     print("Cold")
 
 
-for i in range(3):
-    print("Attempt", i)
+for attempt_number in range(3):
+    print("Attempt", attempt_number)
 
 
 """

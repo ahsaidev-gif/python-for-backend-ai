@@ -8,15 +8,11 @@ Demonstration:
 - Sorting simple and complex data
 """
 
-# =========================
-# BASIC LIST OPERATIONS
-# =========================
-
 documents = ["doc1.pdf", "doc2.pdf", "doc3.pdf"]
 documents.append("doc4.pdf")
 
-for doc in documents:
-    print(doc)
+for document in documents:
+    print(document)
 
 
 """
@@ -27,10 +23,6 @@ doc3.pdf
 doc4.pdf
 """
 
-
-# =========================
-# ENUMERATE LIST
-# =========================
 
 letters = ["a", "b", "c"]
 
@@ -46,14 +38,10 @@ Output:
 """
 
 
-# =========================
-# LIST CREATION
-# =========================
-
 numbers = list(range(20))
-chars = list("Hello World")
+characters = list("Hello World")
 
-print(len(chars))
+print(len(characters))
 
 
 """
@@ -61,10 +49,6 @@ Output:
 11
 """
 
-
-# =========================
-# LIST SLICING
-# =========================
 
 letters = ["a", "b", "c", "d"]
 letters[0] = "A"
@@ -80,10 +64,6 @@ Output:
 """
 
 
-# =========================
-# LIST UNPACKING
-# =========================
-
 numbers = [1, 2, 3, 4, 4, 4, 4, 9]
 first, *others, last = numbers
 
@@ -97,10 +77,6 @@ Output:
 [2, 3, 4, 4, 4, 4]
 """
 
-
-# =========================
-# ADD / REMOVE OPERATIONS
-# =========================
 
 letters = ["a", "b", "c"]
 
@@ -120,10 +96,6 @@ Output:
 """
 
 
-# =========================
-# COUNT & SEARCH
-# =========================
-
 letters = ["a", "b", "c"]
 
 print(letters.count("d"))
@@ -138,10 +110,6 @@ Output:
 """
 
 
-# =========================
-# SORTING LISTS
-# =========================
-
 numbers = [3, 51, 2, 8, 6]
 
 print(sorted(numbers, reverse=True))
@@ -154,10 +122,6 @@ Output:
 [3, 51, 2, 8, 6]
 """
 
-
-# =========================
-# SORTING COMPLEX DATA
-# =========================
 
 items = [
     ("Product1", 10),

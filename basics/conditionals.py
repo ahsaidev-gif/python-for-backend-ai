@@ -7,14 +7,14 @@ Demonstrates decision-making patterns used in backend systems.
 # BASIC IF / ELIF / ELSE
 # =========================
 
-x = int(input("Please enter an integer: "))
+number = int(input("Please enter an integer: "))
 
-if x < 0:
-    x = 0
+if number < 0:
+    number = 0
     print("Negative changed to zero")
-elif x == 0:
+elif number == 0:
     print("Zero")
-elif x == 1:
+elif number == 1:
     print("Single")
 else:
     print("More")
@@ -101,11 +101,11 @@ It's a hot day
 """
 
 
-name = "John Smith"
+full_name = "John Smith"
 
-if len(name) < 3:
+if len(full_name) < 3:
     print("Name must be at least 3 characters")
-elif len(name) > 50:
+elif len(full_name) > 50:
     print("Name must be a maximum of 50 characters")
 else:
     print("Name looks good!")
@@ -120,15 +120,15 @@ Name looks good!
 # PROJECT: WEIGHT CONVERTER
 # =========================
 
-weight = int(input("Weight: "))
-unit = input("(L)bs or (K)g: ")
+weight_value = int(input("Weight: "))
+weight_unit = input("(L)bs or (K)g: ")
 
-if unit.upper() == "L":
-    converted = weight * 0.45
-    print(f"You are {converted} kilos")
+if weight_unit.upper() == "L":
+    converted_weight = weight_value * 0.45
+    print(f"You are {converted_weight} kilos")
 else:
-    converted = weight / 0.45
-    print(f"You are {converted} pounds")
+    converted_weight = weight_value / 0.45
+    print(f"You are {converted_weight} pounds")
 
 """
 Sample Input:
@@ -144,13 +144,13 @@ You are 72.0 kilos
 # LOOP ELSE (PRIME CHECK)
 # =========================
 
-for n in range(2, 10):
-    for x in range(2, n):
-        if n % x == 0:
-            print(n, "equals", x, "*", n // x)
+for number in range(2, 10):
+    for divisor in range(2, number):
+        if number % divisor == 0:
+            print(number, "equals", divisor, "*", number // divisor)
             break
     else:
-        print(n, "is a prime number")
+        print(number, "is a prime number")
 
 
 # =========================
@@ -171,9 +171,9 @@ Access granted
 """
 
 
-age = 17
+user_age = 17
 
-if age < 18:
+if user_age < 18:
     print("User is underage")
 else:
     print("User is eligible")

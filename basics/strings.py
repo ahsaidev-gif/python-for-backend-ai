@@ -10,17 +10,14 @@ Demonstration:
 
 course = "Python Programming"
 
-# String slicing
 print(course[0:3])
-
-# String methods
 print(course.upper())
 print(course.strip())
 
-# Formatted string
-first = "Akash"
-last = "H S"
-full_name = f"{first} {last}"
+
+first_name = "Akash"
+last_name = "H S"
+full_name = f"{first_name} {last_name}"
 print(full_name)
 
 

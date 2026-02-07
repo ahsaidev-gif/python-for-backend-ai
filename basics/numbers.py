@@ -5,23 +5,21 @@ Demonstration:
 - Basic arithmetic operations
 - Integer division
 - Rounding numbers
-- Using math module
-- Type conversion from input
+- Using the math module
+- Type conversion from user input
 """
 
 import math
 
-# Arithmetic operations
-print(10 + 3)      # addition
-print(10 // 3)     # integer division
-print(round(2.9))  # rounding
-print(math.ceil(2.2))  # ceiling value
+
+print(10 + 3)
+print(10 // 3)
+print(round(2.9))
+print(math.ceil(2.2))
 
 
-# Type conversion from input
-# Sample input assumed: 5
-x = int(input("Enter a number: "))
-print(x + 1)
+number = int(input("Enter a number: "))
+print(number + 1)
 
 
 """

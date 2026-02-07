@@ -26,8 +26,7 @@ This repository documents **core Python concepts** with practical examples that 
 * Truthy and falsy values
 * Conditional statements (`if / elif / else`, ternary expressions)
 * Logical operators and comparisons
-* Looping constructs:
-
+* Looping constructs (`for`, `while`, `break`, `continue`, loop `else`)
 * Python lists:
   * Mutability and references
   * Indexing and slicing
@@ -94,7 +93,6 @@ This repository acts as a **reference base** for all future AI-related backend w
 * Notes are written in plain, practical language
 * Examples reflect real backend scenarios
 * Emphasis on:
-
   * Readability
   * Predictable behavior
   * Safe defaults
@@ -116,7 +114,5 @@ Planned progression after this repository:
 
 ## Author
 
-**ahs**
+**ahs**  
 Backend Software Engineer → AI Engineer
-
----

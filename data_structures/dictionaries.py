@@ -9,10 +9,6 @@ Demonstration:
 - Text replacement using dictionary lookup
 """
 
-# =========================
-# METADATA DICTIONARY
-# =========================
-
 document = {
     "id": 1,
     "name": "policy.pdf",
@@ -38,10 +34,6 @@ processed True
 """
 
 
-# =========================
-# SAFE DICTIONARY ACCESS
-# =========================
-
 customer = {
     "name": "John Smith",
     "age": 30,
@@ -57,11 +49,6 @@ John Smith
 """
 
 
-# =========================
-# DICTIONARY MAPPING
-# =========================
-# Sample input assumed: 1345
-
 phone = input("Phone: ")
 
 digits_mapping = {
@@ -72,8 +59,8 @@ digits_mapping = {
 }
 
 output = ""
-for ch in phone:
-    output += digits_mapping.get(ch, "!") + " "
+for digit in phone:
+    output += digits_mapping.get(digit, "!") + " "
 
 print(output)
 
@@ -84,11 +71,6 @@ Phone: 1345
 One Three Four !
 """
 
-
-# =========================
-# TEXT / EMOJI REPLACEMENT
-# =========================
-# Sample input assumed: Good morning :)
 
 message = input("> ")
 words = message.split(" ")

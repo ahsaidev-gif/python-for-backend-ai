@@ -1,14 +1,19 @@
 """
-Basic file read/write operations.
+Basic file handling examples used in backend programs.
 
 Demonstration:
-- Opening a file using context manager (with statement)
-- Writing text to a file
-- Automatic file closing after operation
+- Reading and writing text files
+- Using context managers (with statement)
+- File positioning
+- Binary file handling
+- JSON serialization and deserialization
+- File discovery using wildcards
 """
 
 import glob
 import json
+
+
 with open("content.txt", "w") as file:
     file.write("Hello from backend Python")
 
@@ -22,20 +27,13 @@ File content:
 Hello from backend Python
 """
 
-"""
-File handling, compilation behavior, JSON serialization,
-and filesystem utilities.
-"""
 
-# =========================
-# FILE WRITE (TEXT MODE)
-# =========================
-
-with open("example.txt", "w", encoding="utf-8") as f:
-    f.write("This is a test file.\n")
-    f.write("Python file handling example.")
+with open("example.txt", "w", encoding="utf-8") as file:
+    file.write("This is a test file.\n")
+    file.write("Python file handling example.")
 
 print("File written successfully.")
+
 
 """
 Output:
@@ -43,15 +41,12 @@ File written successfully.
 """
 
 
-# =========================
-# FILE READ
-# =========================
-
-with open("example.txt", "r", encoding="utf-8") as f:
-    content = f.read()
+with open("example.txt", "r", encoding="utf-8") as file:
+    content = file.read()
 
 print(content)
 
+
 """
 Output:
 This is a test file.
@@ -59,14 +54,11 @@ Python file handling example.
 """
 
 
-# =========================
-# READ LINE BY LINE
-# =========================
-
-with open("example.txt", "r", encoding="utf-8") as f:
-    for line in f:
+with open("example.txt", "r", encoding="utf-8") as file:
+    for line in file:
         print(line.strip())
 
+
 """
 Output:
 This is a test file.
@@ -74,14 +66,11 @@ Python file handling example.
 """
 
 
-# =========================
-# FILE POSITIONING
-# =========================
+with open("example.txt", "r", encoding="utf-8") as file:
+    print(file.tell())
+    file.seek(5)
+    print(file.read(4))
 
-with open("example.txt", "r", encoding="utf-8") as f:
-    print(f.tell())
-    f.seek(5)
-    print(f.read(4))
 
 """
 Output:
@@ -90,28 +79,20 @@ is a
 """
 
 
-# =========================
-# BINARY FILE COPY (IMAGE / FILE)
-# =========================
+with open("source.bin", "wb") as file:
+    file.write(b"0123456789abcdef")
 
-with open("source.bin", "wb") as f:
-    f.write(b"0123456789abcdef")
-
-with open("source.bin", "rb") as src, open("copy.bin", "wb") as dst:
-    for chunk in src:
-        dst.write(chunk)
+with open("source.bin", "rb") as source_file, open("copy.bin", "wb") as destination_file:
+    for chunk in source_file:
+        destination_file.write(chunk)
 
 print("Binary file copied.")
+
 
 """
 Output:
 Binary file copied.
 """
-
-
-# =========================
-# JSON SERIALIZATION
-# =========================
 
 
 data = {
@@ -120,10 +101,11 @@ data = {
     "enabled": True
 }
 
-with open("config.json", "w", encoding="utf-8") as f:
-    json.dump(data, f)
+with open("config.json", "w", encoding="utf-8") as file:
+    json.dump(data, file)
 
 print("JSON saved.")
+
 
 """
 Output:
@@ -131,14 +113,11 @@ JSON saved.
 """
 
 
-# =========================
-# JSON DESERIALIZATION
-# =========================
-
-with open("config.json", "r", encoding="utf-8") as f:
-    loaded_data = json.load(f)
+with open("config.json", "r", encoding="utf-8") as file:
+    loaded_data = json.load(file)
 
 print(loaded_data)
+
 
 """
 Output:
@@ -146,13 +125,9 @@ Output:
 """
 
 
-# =========================
-# FILE WILDCARDS
-# =========================
-
-
 python_files = glob.glob("*.py")
 print(python_files)
+
 
 """
 Output:

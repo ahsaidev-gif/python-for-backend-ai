@@ -1,40 +1,36 @@
 """
-Control Flow Examples: for loops, while loops, and miscellaneous patterns.
+Control flow examples using for loops, while loops, and related patterns.
 
-Demonstration:
-- Iterating over strings, lists, ranges
+Demonstrates:
+- Iterating over strings, lists, and ranges
 - Aggregation using loops
 - State-based execution with while loops
-- break / continue usage
+- break and continue usage
 - match statement
 - Variable arguments and lambda usage
 """
+
 
 # =========================
 # FOR LOOP EXAMPLES
 # =========================
 
-# Iterating over a string
-for char in "Python":
-    print(char)
+for character in "Python":
+    print(character)
 
-# Iterating over a list
 names = ["Mosh", "John", "Sarah"]
 for name in names:
     print(name)
 
-# Iterating using range
-for i in range(10):
-    print(i)
+for number in range(10):
+    print(number)
 
-# Aggregation example
 prices = [10, 20, 30]
-total = 0
+total_price = 0
 for price in prices:
-    total += price
-print(f"Total: {total}")
+    total_price += price
+print(f"Total: {total_price}")
 
-# Enumerate example
 letters = ["a", "b", "c"]
 for index, letter in enumerate(letters):
     print(index, letter)
@@ -72,11 +68,10 @@ Total: 60
 # WHILE LOOP EXAMPLES
 # =========================
 
-# Pattern printing
-i = 1
-while i <= 5:
-    print("*" * i)
-    i += 1
+counter = 1
+while counter <= 5:
+    print("*" * counter)
+    counter += 1
 print("Done")
 
 
@@ -90,10 +85,6 @@ Output:
 Done
 """
 
-
-# Guessing game
-# Assumption: secret_number = 9
-# Sample inputs: 3, 5, 9
 
 secret_number = 9
 guess_count = 0
@@ -118,9 +109,6 @@ Guess: 9
 You won!
 """
 
-
-# Car game (command-driven loop)
-# Sample inputs: help, start, stop, quit
 
 started = False
 
@@ -176,14 +164,11 @@ Car stopped.
 # MISC CONTROL FLOW
 # =========================
 
-# If / elif / else
-# Sample input: 5
+user_input = int(input("Enter a number: "))
 
-x = int(input("Enter a number: "))
-
-if x < 0:
+if user_input < 0:
     print("Negative")
-elif x == 0:
+elif user_input == 0:
     print("Zero")
 else:
     print("Positive")
@@ -196,11 +181,10 @@ Positive
 """
 
 
-# Loop control with continue
-for num in range(2, 10):
-    if num % 2 == 0:
+for number in range(2, 10):
+    if number % 2 == 0:
         continue
-    print(f"Odd number: {num}")
+    print(f"Odd number: {number}")
 
 
 """
@@ -212,13 +196,12 @@ Odd number: 9
 """
 
 
-# Loop with else (prime check)
-for n in range(2, 10):
-    for x in range(2, n):
-        if n % x == 0:
+for candidate in range(2, 10):
+    for divisor in range(2, candidate):
+        if candidate % divisor == 0:
             break
     else:
-        print(f"{n} is prime")
+        print(f"{candidate} is prime")
 
 
 """
@@ -230,9 +213,8 @@ Output:
 """
 
 
-# match statement (Python 3.10+)
-def http_error(status):
-    match status:
+def http_error(status_code):
+    match status_code:
         case 404:
             return "Not Found"
         case 500:
@@ -254,7 +236,6 @@ Unknown Error
 """
 
 
-# Function with variable arguments
 def concat(*args, sep="/"):
     return sep.join(args)
 
@@ -268,9 +249,8 @@ earth/mars/venus
 """
 
 
-# Lambda example
 items = [(1, "one"), (2, "two"), (3, "three")]
-items.sort(key=lambda item: item[1])
+items.sort(key=lambda pair: pair[1])
 print(items)
 
 

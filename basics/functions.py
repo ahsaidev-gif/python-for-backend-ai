@@ -1,16 +1,21 @@
 """
 Function definitions and argument handling.
 
-Demonstration:
+Demonstrates:
 - Defining reusable functions
 - Returning values from functions
 - Using *args to accept multiple inputs
 - Iterating over arguments to perform aggregation
+- range() usage
+- Function arguments and best practices
 """
-
 
 import sys
 
+
+# =========================
+# BASIC FUNCTIONS
+# =========================
 
 def greet(name):
     return f"Hi {name}"
@@ -18,15 +23,13 @@ def greet(name):
 
 def multiply(*numbers):
     total = 1
-    for n in numbers:
-        total *= n
+    for value in numbers:
+        total *= value
     return total
 
 
-# Function calls
 print(greet("Akash"))
 print(multiply(2, 3, 4))
-
 
 """
 Output:
@@ -34,17 +37,13 @@ Hi Akash
 24
 """
 
-"""
-Functions and iteration examples.
-Demonstrates range(), function definitions, arguments, and best practices.
-"""
 
 # =========================
 # RANGE FUNCTION
 # =========================
 
-for i in range(5):
-    print(i)
+for number in range(5):
+    print(number)
 
 print(list(range(5, 10)))
 print(list(range(0, 10, 3)))
@@ -69,8 +68,8 @@ Output:
 
 words = ["Mary", "had", "a", "little", "lamb"]
 
-for i in range(len(words)):
-    print(i, words[i])
+for index in range(len(words)):
+    print(index, words[index])
 
 """
 Output:
@@ -86,10 +85,10 @@ Output:
 # FUNCTION: FIBONACCI (PRINT)
 # =========================
 
-def fib(n):
-    """Print Fibonacci numbers less than n."""
+def fib(limit):
+    """Print Fibonacci numbers less than limit."""
     a, b = 0, 1
-    while a < n:
+    while a < limit:
         print(a, end=" ")
         a, b = b, a + b
     print()
@@ -107,11 +106,11 @@ Output:
 # FUNCTION: FIBONACCI (RETURN)
 # =========================
 
-def fib_list(n):
-    """Return Fibonacci series less than n as a list."""
+def fib_list(limit):
+    """Return Fibonacci series less than limit as a list."""
     result = []
     a, b = 0, 1
-    while a < n:
+    while a < limit:
         result.append(a)
         a, b = b, a + b
     return result
@@ -129,12 +128,12 @@ Output:
 # DEFAULT ARGUMENTS
 # =========================
 
-def greet(name="User"):
+def greet_default(name="User"):
     print(f"Hello {name}")
 
 
-greet()
-greet("Akash")
+greet_default()
+greet_default("Akash")
 
 
 # =========================
