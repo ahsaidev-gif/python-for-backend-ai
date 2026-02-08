@@ -590,4 +590,375 @@ I can now:
 
 These concepts will be reused in future AI and backend projects.
 
+## Learning Log — Day 8 — 08-02-2026
+
+
+```python
+"""
+Pandas Fundamentals — 10 Minutes Overview
+
+This file contains hands-on examples covering:
+- Core pandas data structures (Series, DataFrame)
+- Data creation and inspection
+- Indexing and selection
+- Sorting, filtering, and boolean indexing
+- Missing data handling
+- Aggregations and transformations
+- Merging, grouping, reshaping
+- Time series operations
+- Categorical data
+- Plotting basics
+- Importing and exporting data
+
+The examples follow pandas documentation style and are used
+to understand data processing workflows commonly required
+in backend and AI systems.
+"""
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+```
+
+---
+
+## Basic Data Structures
+
+### Series
+
+```python
+series_example = pd.Series([1, 3, 5, np.nan, 6, 8])
+series_example
+```
+
+---
+
+### DataFrame with Date Index
+
+```python
+dates = pd.date_range("20130101", periods=6)
+
+data_frame = pd.DataFrame(
+    np.random.randn(6, 4),
+    index=dates,
+    columns=list("ABCD")
+)
+
+data_frame
+```
+
+---
+
+### DataFrame from Dictionary
+
+```python
+data_frame_mixed = pd.DataFrame(
+    {
+        "A": 1.0,
+        "B": pd.Timestamp("20130102"),
+        "C": pd.Series(1, index=list(range(4)), dtype="float32"),
+        "D": np.array([3] * 4, dtype="int32"),
+        "E": pd.Categorical(["test", "train", "test", "train"]),
+        "F": "foo",
+    }
+)
+
+data_frame_mixed
+```
+
+```python
+data_frame_mixed.dtypes
+```
+
+---
+
+## Viewing Data
+
+```python
+data_frame.head()
+data_frame.tail(3)
+data_frame.index
+data_frame.columns
+```
+
+```python
+data_frame.to_numpy()
+data_frame_mixed.to_numpy()
+```
+
+```python
+data_frame.describe()
+data_frame.T
+```
+
+---
+
+## Sorting
+
+```python
+data_frame.sort_index(axis=1, ascending=False)
+data_frame.sort_values(by="B")
+```
+
+---
+
+## Selection
+
+### Column Selection
+
+```python
+data_frame["A"]
+data_frame.A
+data_frame[["B", "A"]]
+```
+
+### Row Selection
+
+```python
+data_frame[0:3]
+data_frame["20130102":"20130104"]
+```
+
+### Label-Based Selection
+
+```python
+data_frame.loc[dates[0]]
+data_frame.loc[:, ["A", "B"]]
+data_frame.loc["20130102":"20130104", ["A", "B"]]
+data_frame.at[dates[0], "A"]
+```
+
+### Position-Based Selection
+
+```python
+data_frame.iloc[3]
+data_frame.iloc[3:5, 0:2]
+data_frame.iloc[[1, 2, 4], [0, 2]]
+data_frame.iat[1, 1]
+```
+
+---
+
+## Boolean Indexing
+
+```python
+data_frame[data_frame["A"] > 0]
+data_frame[data_frame > 0]
+```
+
+```python
+data_frame_filter = data_frame.copy()
+data_frame_filter["E"] = ["one", "one", "two", "three", "four", "three"]
+
+data_frame_filter[data_frame_filter["E"].isin(["two", "four"])]
+```
+
+---
+
+## Setting Data
+
+```python
+series_alignment = pd.Series(
+    [1, 2, 3, 4, 5, 6],
+    index=pd.date_range("20130102", periods=6)
+)
+
+data_frame["F"] = series_alignment
+data_frame.at[dates[0], "A"] = 0
+data_frame.iat[0, 1] = 0
+data_frame.loc[:, "D"] = np.array([5] * len(data_frame))
+```
+
+---
+
+## Missing Data
+
+```python
+data_frame_reindexed = data_frame.reindex(
+    index=dates[0:4],
+    columns=list(data_frame.columns) + ["E"]
+)
+
+data_frame_reindexed.dropna(how="any")
+data_frame_reindexed.fillna(value=5)
+pd.isna(data_frame_reindexed)
+```
+
+---
+
+## Operations & Statistics
+
+```python
+data_frame.mean()
+data_frame.mean(axis=1)
+```
+
+```python
+shifted_series = pd.Series(
+    [1, 3, 5, np.nan, 6, 8],
+    index=dates
+).shift(2)
+
+data_frame.sub(shifted_series, axis="index")
+```
+
+---
+
+## Aggregation & Transformation
+
+```python
+data_frame.agg(lambda col: np.mean(col) * 5.6)
+data_frame.transform(lambda col: col * 101.2)
+```
+
+---
+
+## Value Counts
+
+```python
+random_series = pd.Series(np.random.randint(0, 7, size=10))
+random_series.value_counts()
+```
+
+---
+
+## String Methods
+
+```python
+string_series = pd.Series(
+    ["A", "B", "C", "Aaba", "Baca", np.nan, "CABA", "dog", "cat"]
+)
+
+string_series.str.lower()
+```
+
+---
+
+## Concatenation
+
+```python
+concat_frame = pd.DataFrame(np.random.randn(10, 4))
+frames = [concat_frame[:3], concat_frame[3:7], concat_frame[7:]]
+pd.concat(frames)
+```
+
+---
+
+## Merge / Join
+
+```python
+left = pd.DataFrame({"key": ["foo", "foo"], "lval": [1, 2]})
+right = pd.DataFrame({"key": ["foo", "foo"], "rval": [4, 5]})
+
+pd.merge(left, right, on="key")
+```
+
+---
+
+## Grouping
+
+```python
+group_frame = pd.DataFrame(
+    {
+        "A": ["foo", "bar", "foo", "bar", "foo", "bar", "foo", "foo"],
+        "B": ["one", "one", "two", "three", "two", "two", "one", "three"],
+        "C": np.random.randn(8),
+        "D": np.random.randn(8),
+    }
+)
+
+group_frame.groupby("A")[["C", "D"]].sum()
+group_frame.groupby(["A", "B"]).sum()
+```
+
+---
+
+## Reshaping
+
+```python
+arrays = [
+    ["bar", "bar", "baz", "baz", "foo", "foo", "qux", "qux"],
+    ["one", "two", "one", "two", "one", "two", "one", "two"],
+]
+
+multi_index = pd.MultiIndex.from_arrays(arrays, names=["first", "second"])
+reshape_frame = pd.DataFrame(np.random.randn(8, 2), index=multi_index, columns=["A", "B"])
+
+stacked = reshape_frame[:4].stack()
+stacked.unstack()
+```
+
+---
+
+## Pivot Tables
+
+```python
+pivot_frame = pd.DataFrame(
+    {
+        "A": ["one", "one", "two", "three"] * 3,
+        "B": ["A", "B", "C"] * 4,
+        "C": ["foo", "foo", "foo", "bar", "bar", "bar"] * 2,
+        "D": np.random.randn(12),
+        "E": np.random.randn(12),
+    }
+)
+
+pd.pivot_table(pivot_frame, values="D", index=["A", "B"], columns=["C"])
+```
+
+---
+
+## Time Series
+
+```python
+time_index = pd.date_range("1/1/2012", periods=100, freq="s")
+time_series = pd.Series(np.random.randint(0, 500, len(time_index)), index=time_index)
+
+time_series.resample("5Min").sum()
+```
+
+---
+
+## Categoricals
+
+```python
+category_frame = pd.DataFrame(
+    {"id": [1, 2, 3, 4, 5, 6], "raw_grade": ["a", "b", "b", "a", "a", "e"]}
+)
+
+category_frame["grade"] = category_frame["raw_grade"].astype("category")
+category_frame["grade"] = category_frame["grade"].cat.rename_categories(
+    ["very good", "good", "very bad"]
+)
+```
+
+---
+
+## Plotting
+
+```python
+plot_series = pd.Series(np.random.randn(1000)).cumsum()
+plot_series.plot()
+plt.close("all")
+```
+
+---
+
+## Import / Export
+
+```python
+export_frame = pd.DataFrame(np.random.randint(0, 5, (10, 5)))
+export_frame.to_csv("example.csv")
+pd.read_csv("example.csv")
+```
+
+---
+
+## Key Takeaways
+
+* Pandas is built for labeled, structured data
+* Index alignment is automatic and powerful
+* Selection APIs (`loc`, `iloc`) are essential for correctness
+* Grouping, reshaping, and merging are core backend workflows
+* Pandas forms the foundation for AI data pipelines
 
