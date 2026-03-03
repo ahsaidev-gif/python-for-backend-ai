@@ -962,3 +962,29 @@ pd.read_csv("example.csv")
 * Grouping, reshaping, and merging are core backend workflows
 * Pandas forms the foundation for AI data pipelines
 
+## Learning Log — Day 9 — 09-02-2026
+
+# Select specific column
+names = df["name"]
+print(names)
+
+# Filter active users
+active_users = df[df["active"] == True]
+print(active_users)
+
+# Handle missing values
+df_filled = df.fillna("UNKNOWN")
+print(df_filled)
+
+
+## Pandas Filtering & Cleaning (Backend Perspective)
+
+Pandas is commonly used to:
+- Select required columns
+- Filter records based on conditions
+- Handle missing or incomplete data
+
+These steps are critical before passing data
+to downstream AI or backend services.
+
+
