@@ -987,4 +987,17 @@ Pandas is commonly used to:
 These steps are critical before passing data
 to downstream AI or backend services.
 
+## Learning Log — Day 10 — 06-03-2026
+
+## JSON Handling (Backend Perspective)
+
+JSON is the most common data exchange format used in APIs and AI systems.
+
+Python uses the built-in json module to:
+- Convert dictionaries to JSON files
+- Load JSON files into Python dictionaries
+
+Common functions:
+json.dump()  → write JSON
+json.load()  → read JSON
 
