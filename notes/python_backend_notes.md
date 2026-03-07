@@ -1001,3 +1001,16 @@ Common functions:
 json.dump()  → write JSON
 json.load()  → read JSON
 
+## Learning Log — Day 11 — 07-03-2026
+
+## APIs and HTTP Requests (Backend Perspective)
+
+APIs allow programs to communicate with external services.
+
+Common request types:
+GET  → retrieve data
+POST → send data
+
+Python uses the requests library to call APIs.
+
+API responses are usually returned in JSON format.
