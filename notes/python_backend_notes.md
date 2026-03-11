@@ -1014,3 +1014,16 @@ POST → send data
 Python uses the requests library to call APIs.
 
 API responses are usually returned in JSON format.
+
+## Learning Log — Day 12 — 11-03-2026
+
+## Prompt Payloads (AI Systems)
+
+AI APIs receive requests in the form of JSON payloads.
+
+A payload usually includes:
+- prompt → user instruction
+- temperature → randomness control
+- max_tokens → response length
+
+Python converts dictionaries into JSON payloads before sending them to the AI API.
