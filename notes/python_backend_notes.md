@@ -1027,3 +1027,14 @@ A payload usually includes:
 - max_tokens → response length
 
 Python converts dictionaries into JSON payloads before sending them to the AI API.
+
+## Learning Log — Day 12 — 11-03-2026
+
+## AI Prompt Flow
+
+Basic AI systems follow this flow:
+
+User Prompt → Processing → Response
+
+In real applications:
+Python backend sends the prompt to an AI API and receives the generated response.
