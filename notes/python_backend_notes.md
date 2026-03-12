@@ -1038,3 +1038,15 @@ User Prompt → Processing → Response
 
 In real applications:
 Python backend sends the prompt to an AI API and receives the generated response.
+
+## Learning Log — Day 13 — 12-03-2026
+
+## POST Requests (API Communication)
+
+POST requests are used to send data to an API.
+
+In AI systems:
+Python sends prompts as JSON payloads using POST requests.
+
+The API processes the request and returns a JSON response.
+
