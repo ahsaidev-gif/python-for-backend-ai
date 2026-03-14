@@ -1050,3 +1050,21 @@ Python sends prompts as JSON payloads using POST requests.
 
 The API processes the request and returns a JSON response.
 
+
+## Learning Log — Day 14 — 14-03-2026
+
+## AI Request Pipeline
+
+Basic flow used in AI systems:
+
+User Prompt
+↓
+Python program
+↓
+JSON payload
+↓
+POST request to AI API
+↓
+AI generates response
+↓
+Python processes response
