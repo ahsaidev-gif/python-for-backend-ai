@@ -1068,3 +1068,15 @@ POST request to AI API
 AI generates response
 ↓
 Python processes response
+
+## Learning Log — Day 15 — 17-03-2026
+
+## LLM Basics
+
+LLM = Large Language Model.
+
+These models generate text by predicting the next token.
+
+Important concepts:
+- tokens → units of text processed by the model
+- temperature → randomness of the output
