@@ -2,25 +2,20 @@
 Basic CLI for AI assistant (starting point).
 """
 
+from utils.file_loader import load_text
+
 
 def get_user_query():
     return input("Ask your question: ")
 
 
 def generate_response(query):
-    query = query.lower()
+    content = load_text("ai_project/data/sample.txt")
 
-    if "python" in query:
-        return "Python is widely used in backend development and AI systems."
+    if query.lower() in content.lower():
+        return f"I found something related:\n{content}"
 
-    elif "ai" in query or "artificial intelligence" in query:
-        return "AI enables machines to simulate human intelligence like learning and reasoning."
-
-    elif "rag" in query:
-        return " RAG (Retrieval-Augmented Generation) combines seacrh with LLMs to give accurate answers."
-
-    else:
-        return "I am still learning. Please ask about Python, AI, or RAG."
+    return "No relevant information found."
 
 
 def main():
