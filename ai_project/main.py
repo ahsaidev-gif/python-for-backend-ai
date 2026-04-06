@@ -11,13 +11,16 @@ def get_user_query():
 
 def generate_response(query):
     content = load_text("ai_project/data/sample.txt")
-    chunks = split_into_chunks(content)\
+    chunks = split_into_chunks(content)
 
-    query = query.lower()
+    query_words = query.lower().split()
 
     for chunk in chunks:
-        if query in chunk.lower():
-            return f"Relevant info:\n{chunk.strip()}"
+        chunk_lower = chunk.lower()
+
+        for word in query_words:
+            if word in chunk_lower:
+                return f"Relevant info:\n{chunk.strip()}"
 
     return "No relevant information found."
 
