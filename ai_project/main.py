@@ -2,7 +2,7 @@
 Basic CLI for AI assistant (starting point).
 """
 
-from utils.file_loader import load_text
+from utils.file_loader import load_text, split_into_chunks
 
 
 def get_user_query():
@@ -11,9 +11,13 @@ def get_user_query():
 
 def generate_response(query):
     content = load_text("ai_project/data/sample.txt")
+    chunks = split_into_chunks(content)\
 
-    if query.lower() in content.lower():
-        return f"I found something related:\n{content}"
+    query = query.lower()
+
+    for chunk in chunks:
+        if query in chunk.lower():
+            return f"Relevant info:\n{chunk.strip()}"
 
     return "No relevant information found."
 
