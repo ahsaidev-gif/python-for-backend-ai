@@ -15,12 +15,47 @@ def generate_response(query):
 
     query_words = query.lower().split()
 
+    best_chunk = ""
+    max_matches = 0
+
     for chunk in chunks:
         chunk_lower = chunk.lower()
+        match_count = 0
 
         for word in query_words:
             if word in chunk_lower:
-                return f"Relevant info:\n{chunk.strip()}"
+                match_count += 1
+
+        if match_count > max_matches:
+            max_matches = match_count
+            best_chunk = chunk
+
+    if max_matches > 0:
+        return f"Best match:\n{best_chunk.strip()}"
+
+    return "No relevant information found."
+    content = load_text("ai_project/data/sample.txt")
+    chunks = split_into_chunks(content)
+
+    query_words = query.lower().split()
+
+    best_chunk = ""
+    max_matches = 0
+
+    for chunk in chunks:
+        chunk_lower = chunk.lower()
+        match_count = 0
+
+        for word in query_words:
+            if word in chunk_lower:
+                match_count += 1
+
+        if match_count > max_matches:
+            max_matches = match_count
+            best_chunk = chunk
+
+    if max_matches > 0:
+        return f"Best match:\n{chunk.strip()}"
 
     return "No relevant information found."
 
