@@ -13,24 +13,24 @@ def generate_response(query):
     content = load_text("ai_project/data/sample.txt")
     chunks = split_into_chunks(content)
 
-    query_words = query.lower().split()
+    query_words = set(query.lower().split())
 
     best_chunk = ""
-    max_matches = 0
+    best_score = 0
 
     for chunk in chunks:
-        chunk_lower = chunk.lower()
-        match_count = 0
+        chunk_words = set(chunk.lower().split())
 
-        for word in query_words:
-            if word in chunk_lower:
-                match_count += 1
+        # find common words
+        common_words = query_words.intersection(chunk_words)
 
-        if match_count > max_matches:
-            max_matches = match_count
+        score = len(common_words)
+
+        if score > best_score:
+            best_score = score
             best_chunk = chunk
 
-    if max_matches > 0:
+    if best_score > 0:
         return f"Best match:\n{best_chunk.strip()}"
 
     return "No relevant information found."
