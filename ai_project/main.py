@@ -1,8 +1,9 @@
 """
-Basic CLI for AI assistant (starting point).
+Basic CLI for AI assistant.
 """
 
 from utils.file_loader import load_text, split_into_chunks
+from llm_client import ask_llm
 
 
 def get_user_query():
@@ -31,43 +32,38 @@ def generate_response(query):
             best_chunk = chunk
 
     if best_score > 0:
-        return f"Best match:\n{best_chunk.strip()}"
+        return best_chunk.strip()
 
-    return "No relevant information found."
-    content = load_text("ai_project/data/sample.txt")
-    chunks = split_into_chunks(content)
-
-    query_words = query.lower().split()
-
-    best_chunk = ""
-    max_matches = 0
-
-    for chunk in chunks:
-        chunk_lower = chunk.lower()
-        match_count = 0
-
-        for word in query_words:
-            if word in chunk_lower:
-                match_count += 1
-
-        if match_count > max_matches:
-            max_matches = match_count
-            best_chunk = chunk
-
-    if max_matches > 0:
-        return f"Best match:\n{chunk.strip()}"
-
-    return "No relevant information found."
+    return None
 
 
 def main():
     while True:
         query = get_user_query()
 
+        if not query.strip():
+            print("Please enter a question.")
+            continue
+
         if query.lower() == "exit":
+            print("Exiting...")
             break
 
-        response = generate_response(query)
+        try:
+            #  Try LLM first
+            response = ask_llm(query)
+
+        except Exception as e:
+            print("ERROR:", e)
+            print("Using fallback logic...")
+
+            # fallback to your logic
+            chunk = generate_response(query)
+
+            if chunk:
+                response = f"Best match:\n{chunk}"
+            else:
+                response = "No relevant information found."
 
         print("\nAnswer:")
         print(response)
