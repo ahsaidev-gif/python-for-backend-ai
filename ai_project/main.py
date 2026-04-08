@@ -51,7 +51,24 @@ def main():
 
         try:
             #  Try LLM first
-            response = ask_llm(query)
+            # response = ask_llm(query)
+
+            chunk = generate_response(query)
+
+            if chunk:
+                prompt = f"""
+                Answer the question using ONLY the context below
+
+                Context:
+                {chunk}
+
+                Question:
+                {query}
+                """
+
+                response = ask_llm(prompt)
+            else:
+                response = "No relevant information found."
 
         except Exception as e:
             print("ERROR:", e)
