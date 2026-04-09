@@ -5,6 +5,8 @@ Basic CLI for AI assistant.
 from utils.file_loader import load_text, split_into_chunks
 from llm_client import ask_llm
 
+stop_words = {"is", "a", "the", "what", "in", "on", "at", "of", "for", "to"}
+
 
 def get_user_query():
     return input("Ask your question: ")
@@ -14,13 +16,19 @@ def generate_response(query):
     content = load_text("ai_project/data/sample.txt")
     chunks = split_into_chunks(content)
 
-    query_words = set(query.lower().split())
+    query_words = {
+        word for word in query.lower().split()
+        if word not in stop_words
+    }
 
     best_chunk = ""
     best_score = 0
 
     for chunk in chunks:
-        chunk_words = set(chunk.lower().split())
+        chunk_words = {
+            word for word in chunk.lower().split()
+            if word not in stop_words
+        }
 
         # find common words
         common_words = query_words.intersection(chunk_words)
