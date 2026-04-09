@@ -5,3 +5,7 @@ def load_text(filepath):
 
 def split_into_chunks(text):
     return text.split(".")
+
+
+def normalize_text(text):
+    return text.lower().strip()

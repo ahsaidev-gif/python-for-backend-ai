@@ -2,7 +2,7 @@
 Basic CLI for AI assistant.
 """
 
-from utils.file_loader import load_text, split_into_chunks
+from utils.file_loader import load_text, split_into_chunks, normalize_text
 from llm_client import ask_llm
 
 stop_words = {"is", "a", "the", "what", "in", "on", "at", "of", "for", "to"}
@@ -16,17 +16,33 @@ def generate_response(query):
     content = load_text("ai_project/data/sample.txt")
     chunks = split_into_chunks(content)
 
-    query_words = {
-        word for word in query.lower().split()
-        if word not in stop_words
+    query = normalize_text(query)
+
+    synonyms = {
+        "ai": "artificial intelligence",
+        "ml": "machine learning"
     }
+
+    query_words = set()
+
+    for word in query.split():
+        if word in stop_words:
+            continue
+
+        mapped = synonyms.get(word, word)
+
+        # split multi-word synonyms
+        for w in mapped.split():
+            query_words.add(w)
 
     best_chunk = ""
     best_score = 0
 
     for chunk in chunks:
+        chunk = normalize_text(chunk)
+
         chunk_words = {
-            word for word in chunk.lower().split()
+            word for word in chunk.split()
             if word not in stop_words
         }
 
@@ -58,9 +74,7 @@ def main():
             break
 
         try:
-            #  Try LLM first
-            # response = ask_llm(query)
-
+            # Try LLM (will fail if no API → fallback works)
             chunk = generate_response(query)
 
             if chunk:
@@ -82,7 +96,6 @@ def main():
             print("ERROR:", e)
             print("Using fallback logic...")
 
-            # fallback to your logic
             chunk = generate_response(query)
 
             if chunk:

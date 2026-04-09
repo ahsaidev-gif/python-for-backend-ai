@@ -1,3 +1,6 @@
 Python is a programming language.
 AI stands for Artificial Intelligence.
-RAG is used to improve LLM responses. 
+RAG is used to improve LLM responses.
+Artificial intelligence is used in many applications.
+Machine learning is a subset of AI.
+RAG improves AI responses by using external data. 
