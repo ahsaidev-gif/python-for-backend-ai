@@ -3,6 +3,7 @@ Basic CLI for AI assistant.
 """
 
 from utils.file_loader import load_text, split_into_chunks, normalize_text
+from utils.embedding_utils import generate_embedding, cosine_similarity
 from llm_client import ask_llm
 
 stop_words = {"is", "a", "the", "what", "in", "on", "at", "of", "for", "to"}
@@ -36,20 +37,23 @@ def generate_response(query):
             query_words.add(w)
 
     best_chunk = ""
-    best_score = 0
+    best_score = -1
+
+    query_vec = generate_embedding(query)
 
     for chunk in chunks:
         chunk = normalize_text(chunk)
 
-        chunk_words = {
-            word for word in chunk.split()
-            if word not in stop_words
-        }
+       # Keyword score
+        chunk_words = set(chunk.split())
+        keyword_score = len(query_words.intersection(chunk_words))
 
-        # find common words
-        common_words = query_words.intersection(chunk_words)
+       # Embedding score
+        chunk_vec = generate_embedding(chunk)
+        embedding_score = cosine_similarity(query_vec, chunk_vec)
 
-        score = len(common_words)
+        # Combine both
+        score = keyword_score + embedding_score
 
         if score > best_score:
             best_score = score
