@@ -2,8 +2,8 @@
 Basic CLI for AI assistant.
 """
 
-from llm_client import ask_llm
-from retrieval.retriever import retrieve_best_chunk
+from ai_project.services.llm_client import ask_llm
+from ai_project.retrieval.retriever import retrieve_best_chunk
 
 
 def get_user_query():
