@@ -11,12 +11,12 @@ def home():
 
 @app.get("/ask")
 def ask_question(query: str):
-    chunk = retrieve_best_chunk(query)
+    chunks = retrieve_best_chunk(query)
 
-    if chunk:
+    if chunks:
         return {
             "query": query,
-            "answer": chunk
+            "answers": chunks
         }
 
     return {

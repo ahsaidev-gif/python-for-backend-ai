@@ -23,8 +23,7 @@ def retrieve_best_chunk(query):
         for w in mapped.split():
             query_words.add(w)
 
-    best_chunk = ""
-    best_score = -1
+    results = []
 
     query_vec = generate_embedding(query)
 
@@ -39,22 +38,25 @@ def retrieve_best_chunk(query):
 
         keyword_score = len(query_words.intersection(chunk_words))
 
+        # skip irrelevant chunks
+        if keyword_score == 0:
+            continue
+
         # Embedding score
         chunk_vec = generate_embedding(chunk)
         embedding_score = cosine_similarity(query_vec, chunk_vec)
 
         # Combine (improved)
-        score = (2 * keyword_score) + embedding_score
+        # Keyword = real signal
+        # Embedding = fake (random)
+        score = (5 * keyword_score) + embedding_score
 
-        # FIXED BOOST
-        if keyword_score > 0:
-            score += 2
+        results.append((score, chunk))
 
-        if score > best_score:
-            best_score = score
-            best_chunk = chunk
+        # sort by score (highest first)
+    results.sort(reverse=True, key=lambda x: x[0])
 
-    if best_score > 0:
-        return best_chunk.strip()
+    # take top 3
+    top_chunks = [chunk for score, chunk in results[:3]]
 
-    return None
+    return top_chunks if top_chunks else None
